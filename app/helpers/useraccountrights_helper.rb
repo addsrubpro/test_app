@@ -1,0 +1,2 @@
+module UseraccountrightsHelper
+end

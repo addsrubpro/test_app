@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  description: MyString
+
+two:
+  description: MyString
+
+# == Schema Information
+# Schema version: 20110211121348
+#
+# Table name: rights
+#
+#  id          :integer         not null, primary key
+#  description :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+

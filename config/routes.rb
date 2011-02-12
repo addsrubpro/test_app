@@ -1,4 +1,18 @@
 TestApp::Application.routes.draw do
+  get "pages/home"
+
+  get "pages/controlpanel"
+
+  resources :rights
+  resources :useraccountrights
+  resources :useraccounts
+  
+  match 'rightassignment', :to => 'useraccountrights#rightassignment'
+  match 'rightassignment/assign', :to => 'useraccountrights#assign', :as => "right_assign"
+  match 'rightassignment/revoke', :to => 'useraccountrights#revoke', :as => "right_revoke"
+  
+  root :to => "pages#controlpanel"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -45,10 +59,6 @@ TestApp::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => "welcome#index"
 
   # See how all your routes lay out with "rake routes"
 

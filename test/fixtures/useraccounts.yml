@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  username: MyString
+  enabled?: false
+
+two:
+  username: MyString
+  enabled?: false
+
+
+# == Schema Information
+# Schema version: 20110209185700
+#
+# Table name: useraccounts
+#
+#  id         :integer         not null, primary key
+#  username   :string(255)
+#  email      :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+

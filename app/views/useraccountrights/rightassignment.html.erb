@@ -1,0 +1,28 @@
+<h1>Useraccount right assignment</h1>
+
+<% form_tag :controller => "useraccountrights", :action => "rightassignment", :method => :get do %>
+  <%= label_tag 'username', 'Username' %><br />
+  <%= text_field_tag :username, params[:username] %>
+  <%= submit_tag "Submit", :name => nil %>
+<% end %>
+
+<% unless @useraccount.nil? %>
+  <table>
+    <tr>
+      <th>Description</th>
+    </tr>
+
+    <% @rights.each do |right| %>  
+      <tr>  
+        <td><%= right.description %></td>    
+        <% if @useraccount.rights.exists?(right.id) %>
+          <td>[X] <%= link_to 'revoke', right_revoke_path(:right_id => right, :username => $username) %></td>
+        <% else %>
+          <td>[_] <%= link_to 'assign', right_assign_path(:right_id => right, :username => $username) %></td>
+        <% end %>
+      </tr>  
+    <% end %>
+  </table>
+<% end %>
+<br />
+<%= link_to 'Controlpanel', root_path %>

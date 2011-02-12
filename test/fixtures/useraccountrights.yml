@@ -1,0 +1,22 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  useraccount_id: 1
+  right_id: 1
+
+two:
+  useraccount_id: 1
+  right_id: 1
+
+# == Schema Information
+# Schema version: 20110211100713
+#
+# Table name: useraccountrights
+#
+#  id             :integer         not null, primary key
+#  useraccount_id :integer
+#  right_id       :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+

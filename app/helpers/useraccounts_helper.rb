@@ -1,0 +1,2 @@
+module UseraccountsHelper
+end
