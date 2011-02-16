@@ -19,18 +19,19 @@ class UseraccountrightsController < ApplicationController
   
   # assign rights to useraccounts
   def assign
-    a = Useraccount.find_by_username(params[:username])
-    b = Right.find(params[:right_id])
-    a.rights << b
+    useraccount = Useraccount.find_by_username(params[:username])
+    right = Right.find(params[:right_id])
+    useraccount.rights << right
     
     redirect_to :action => 'rightassignment', :username => params[:username]
   end
   
   # revoke rights from useraccounts
   def revoke
-    a = Useraccount.find_by_username(params[:username])
-    b = Right.find(params[:right_id])
-    a.rights.delete(b)
+    useraccount = Useraccount.find_by_username(params[:username])
+    right = Right.find(params[:right_id])
+    useraccount.rights.delete(right)
+    useraccount.touch                           # sets useraccount.updated_at to now
     
     redirect_to :action => 'rightassignment', :username => params[:username]
   end

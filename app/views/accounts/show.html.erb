@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Party:</b>
+  <%= @account.party_id %>
+</p>
+
+<p>
+  <b>Accounttype:</b>
+  <%= @account.accounttype_id %>
+</p>
+
+<p>
+  <b>Account number:</b>
+  <%= @account.account_number %>
+</p>
+
+<p>
+  <b>Charge rate:</b>
+  <%= @account.charge_rate %>
+</p>
+
+<p>
+  <b>Enabled:</b>
+  <%= @account.enabled %>
+</p>
+
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>

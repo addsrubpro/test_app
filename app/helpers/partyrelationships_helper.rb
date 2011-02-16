@@ -1,0 +1,2 @@
+module PartyrelationshipsHelper
+end

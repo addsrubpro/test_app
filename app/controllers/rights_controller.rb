@@ -44,7 +44,8 @@ class RightsController < ApplicationController
 
     respond_to do |format|
       if @right.save
-        format.html { redirect_to(@right, :notice => 'Right was successfully created.') }
+        flash[:success] = "Right was successfully created."
+        format.html { redirect_to(@right) }
         format.xml  { render :xml => @right, :status => :created, :location => @right }
       else
         format.html { render :action => "new" }
@@ -60,7 +61,8 @@ class RightsController < ApplicationController
 
     respond_to do |format|
       if @right.update_attributes(params[:right])
-        format.html { redirect_to(@right, :notice => 'Right was successfully updated.') }
+        flash[:success] = "Right was successfully updated."
+        format.html { redirect_to(@right) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

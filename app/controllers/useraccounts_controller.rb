@@ -44,7 +44,8 @@ class UseraccountsController < ApplicationController
 
     respond_to do |format|
       if @useraccount.save
-        format.html { redirect_to(@useraccount, :notice => 'Useraccount was successfully created.') }
+        flash[:success] = "Useraccount was successfully created."
+        format.html { redirect_to(@useraccount) }
         format.xml  { render :xml => @useraccount, :status => :created, :location => @useraccount }
       else
         format.html { render :action => "new" }
@@ -60,7 +61,8 @@ class UseraccountsController < ApplicationController
 
     respond_to do |format|
       if @useraccount.update_attributes(params[:useraccount])
-        format.html { redirect_to(@useraccount, :notice => 'Useraccount was successfully updated.') }
+        flash[:success] = "Useraccount was successfully updated."
+        format.html { redirect_to(@useraccount) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

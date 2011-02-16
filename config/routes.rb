@@ -1,4 +1,9 @@
 TestApp::Application.routes.draw do
+  resources :partyrelationships
+  resources :accounts
+  resources :parties
+  resources :people
+
   get "pages/home"
 
   get "pages/controlpanel"
@@ -10,6 +15,10 @@ TestApp::Application.routes.draw do
   match 'rightassignment', :to => 'useraccountrights#rightassignment'
   match 'rightassignment/assign', :to => 'useraccountrights#assign', :as => "right_assign"
   match 'rightassignment/revoke', :to => 'useraccountrights#revoke', :as => "right_revoke"
+  
+  match 'relationshipassignment', :to => 'partyrelationships#relationshipassignment'
+  match 'relationshipassignment/assignpossession', :to => 'partyrelationships#assignpossession', :as => "assign_possession"
+  match 'relationshipassignment/possessionrevoke', :to => 'partyrelationships#possessionrevoke', :as => "possession_revoke"
   
   root :to => "pages#controlpanel"
   

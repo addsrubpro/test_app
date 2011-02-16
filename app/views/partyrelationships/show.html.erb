@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Principal:</b>
+  <%= @partyrelationship.principal_id %>
+</p>
+
+<p>
+  <b>Possession:</b>
+  <%= @partyrelationship.possession_id %>
+</p>
+
+<p>
+  <b>Interest:</b>
+  <%= @partyrelationship.interest %>
+</p>
+
+
+<%= link_to 'Edit', edit_partyrelationship_path(@partyrelationship) %> |
+<%= link_to 'Back', partyrelationships_path %>

@@ -1,25 +1,22 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  username: MyString
-  enabled?: false
+  party_id: 1
+  name: MyString
 
 two:
-  username: MyString
-  enabled?: false
-
-
+  party_id: 1
+  name: MyString
 
 # == Schema Information
-# Schema version: 20110213120036
+# Schema version: 20110213121110
 #
-# Table name: useraccounts
+# Table name: people
 #
 #  id         :integer         not null, primary key
-#  username   :string(255)
-#  email      :string(255)
+#  party_id   :integer
+#  name       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
-#  person_id  :integer
 #
 

@@ -1,5 +1,5 @@
 class Useraccountright < ActiveRecord::Base
-  belongs_to :useraccount
+  belongs_to :useraccount, :touch => true
   belongs_to :right
 end
 

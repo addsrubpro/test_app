@@ -1,0 +1,27 @@
+<h1>Listing partyrelationships</h1>
+
+<table>
+  <tr>
+    <th>Principal</th>
+    <th>Possession</th>
+    <th>Interest</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @partyrelationships.each do |partyrelationship| %>
+  <tr>
+    <td><%= partyrelationship.principal_id %></td>
+    <td><%= partyrelationship.possession_id %></td>
+    <td><%= partyrelationship.interest %></td>
+    <td><%= link_to 'Show', partyrelationship %></td>
+    <td><%= link_to 'Edit', edit_partyrelationship_path(partyrelationship) %></td>
+    <td><%= link_to 'Destroy', partyrelationship, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Partyrelationship', new_partyrelationship_path %>
