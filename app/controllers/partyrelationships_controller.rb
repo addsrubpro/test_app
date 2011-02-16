@@ -4,6 +4,7 @@ class PartyrelationshipsController < ApplicationController
     unless params[:party_id].nil?
       party = Party.find(params[:party_id])
       @possessions = party.possessions.order("id asc")
+      @principals = party.principals.order("id asc")
       $party_id = (params[:party_id])
     end
     

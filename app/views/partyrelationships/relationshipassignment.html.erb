@@ -1,43 +1,70 @@
-<h1>Party relationship assignment</h1>
-
+<h2>Party relationship management</h2>
+<!-- party_id parameter form -->
 <% form_tag :controller => "partyrelationships", :action => "relationshipassignment", :method => :get do %>
-  <%= label_tag 'party_id', 'Principal party ID' %><br />
-  <%= text_field_tag :party_id, params[:party_id] %>
+  <%= label_tag 'party_id', 'Party ID:' %> &nbsp
+  <%= text_field_tag :party_id, params[:party_id], :size => 7 %> &nbsp
   <%= submit_tag "Submit", :name => nil %>
 <% end %>
+<hr>
 
+<!-- possessions table -->
 <% unless @possessions.nil? %>
+  <% unless @possessions.empty? %>
   <table>
     <tr>
-      <th>Possession party ID</th>
-      <th>Possession entity name</th>
-      <th>Interest</th>
-      <th>Manage possession</th>
+      <th width=5%>Possession party ID</th>
+      <th width=15%>Possession entity name</th>
+      <th width=15%>Interest</th>
+      <th width=15%>Revoke possession</th>
     </tr>
 
     <% @possessions.each do |possession| %>  
       <tr>  
-        <td><%= possession.id %></td>
-        <td><%= Party.find(possession.id).person.name %></td>
+        <td><%= link_to possession.id, :controller => 'partyrelationships', :action => 'relationshipassignment', :party_id => possession.id %></td>
+        <td><%= link_to Party.find(possession.id).person.name, :controller => 'partyrelationships', :action => 'relationshipassignment', :party_id => possession.id %></td>
         <td><%= Partyrelationship.find_by_principal_id_and_possession_id($party_id, possession.id).interest %></td>
         <td><%= link_to 'revoke', possession_revoke_path(:possession_id => possession, :party_id => $party_id) %></td>       
       </tr>
     <% end %>
-    
   </table>
-
-<hr>
-  <% form_tag :controller => "partyrelationships", :action => "assignpossession", :method => :get do %>
-    <%= label_tag 'possession_id', 'New possession - Party ID ' %><br />
-    <%= text_field_tag :possession_id, params[:possession_id] %><br />
-     
-    <%= label_tag 'interest', 'Interest [decimal value]' %><br />
-    <%= text_field_tag :interest, params[:interest] %>
-    <%= hidden_field_tag(:party_id, $party_id) %>
- 
-    <%= submit_tag "Assign possession", :name => nil %>
-  <% end %>  
+  <% end %>
 <% end %>
 
-<br />
+<!-- new possession form -->
+<% form_tag :controller => "partyrelationships", :action => "assignpossession", :method => :get do %>
+  <%= label_tag 'possession_id', 'Party ID: ' %> &nbsp
+  <%= text_field_tag :possession_id, params[:possession_id], :size => 7 %> &nbsp &nbsp
+ 
+  <%= label_tag 'interest', 'Interest: ' %> &nbsp
+  <%= text_field_tag :interest, params[:interest], :size => 7 %>
+  <%= hidden_field_tag(:party_id, $party_id) %> &nbsp
+
+  <%= submit_tag "Assign possession", :name => nil %>
+<% end %>  
+<hr>
+
+<!-- principals table -->
+<% unless @principals.nil? %>
+  <% unless @principals.empty? %>
+  <table>
+    <tr>
+      <th width=6%>Principal party ID</th>
+      <th width=15%>Principal entity name</th>
+      <th width=15%>Interest</th>
+      <th width=15%></th>
+    </tr>
+
+    <% @principals.each do |principal| %>  
+      <tr>  
+        <td><%= link_to principal.id, :controller => 'partyrelationships', :action => 'relationshipassignment', :party_id => principal.id %></td>
+        <td><%= link_to Party.find(principal.id).person.name, :controller => 'partyrelationships', :action => 'relationshipassignment', :party_id => principal.id %></td>
+        <td><%= Partyrelationship.find_by_principal_id_and_possession_id(principal.id,$party_id).interest %></td>
+        <td></td>
+      </tr>
+    <% end %>
+    
+  </table>
+  <hr>
+  <% end %>
+<% end %>
 <%= link_to 'Controlpanel', root_path %>
