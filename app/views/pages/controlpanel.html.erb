@@ -1,10 +1,27 @@
 <h1>Controlpanel</h1>
 
-<%= link_to 'Partyrelationship assignments', relationshipassignment_path %><br />
-<%= link_to 'Partyrelationships management', partyrelationships_path %><br />
-<%= link_to 'Parties management', parties_path %><br />
-<%= link_to 'E-money accounts management', accounts_path %><br />
-<%= link_to 'People management', people_path %><br />
-<%= link_to 'Useraccounts management', useraccounts_path %><br />
-<%= link_to 'Rights management', rights_path %><br />
-<%= link_to 'Useraccount rights assignment', rightassignment_path %>
+<p>
+  <%= link_to 'E-money accounts management', accounts_path %>
+</p>
+<hr>
+<p>
+  <%= link_to 'Partyrelationship management', relationshipassignment_path %><br />
+  <%= link_to 'People management', people_path %>
+</p>
+<hr>
+<p>
+  <%= link_to 'Useraccounts management', useraccounts_path %><br />
+  <%= link_to 'Useraccount rights assignment', rightassignment_path %>
+</p>
+<hr>
+<p>
+  <%= link_to 'Rights management', rights_path %><br />
+</p>
+<hr>
+<p>
+  Only for development:
+</p>
+<p>
+  <%= link_to 'Parties management', parties_path %><br />
+  <%= link_to 'Partyrelationships management', partyrelationships_path %><br />
+</p>

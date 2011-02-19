@@ -3,10 +3,15 @@ class PeopleController < ApplicationController
   # GET /people.xml
   def index
     @people = Person.all
+    
+    # texta = Party.all.to_xml(:include => :accounts, :skip_types => true)
+    # my_file = File.new("tmp/inout/file7.xml","w")       # create a new "inout" folder within "tmp" first
+    # my_file.write texta
+    # my_file.close
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @people }
+      # format.xml  { render :xml => @people }
     end
   end
 
@@ -15,9 +20,17 @@ class PeopleController < ApplicationController
   def show
     @person = Person.find(params[:id])
 
+    # stream = render_to_string(:template => "people/show.xml.builder" )
+    ## enable download file on client
+    # send_data(stream, :type => "text/xml", :filename => "test9.xml")
+    ## store file on server
+    # my_file = File.new("tmp/inout/file9.2.xml","w")       # create a new "inout" folder within "tmp" first
+    # my_file.write stream
+    # my_file.close
+
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @person }
+      # format.xml # template: /views/people/show.xml.builder  
     end
   end
 

@@ -13,7 +13,11 @@
 
   <div class="field">
     <%= f.label :party_id, 'Party ID' %><br />
-    <%= f.text_field :party_id, 'disabled' => 'true' %>
+    <% unless @person.new_record? %>
+      <%= f.text_field :party_id, 'disabled' => 'true' %>
+    <% else %>
+      <%= f.text_field :party_id, :value => "auto generated", 'disabled' => 'true' %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :name %><br />
