@@ -1,0 +1,22 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  clearing_date: 2011-02-19
+  transaction_id: 1
+
+two:
+  clearing_date: 2011-02-19
+  transaction_id: 1
+
+# == Schema Information
+# Schema version: 20110219093314
+#
+# Table name: clearingouts
+#
+#  id             :integer         not null, primary key
+#  clearing_date  :date
+#  transaction_id :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+

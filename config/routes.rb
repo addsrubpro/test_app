@@ -1,4 +1,8 @@
 TestApp::Application.routes.draw do
+  resources :emoneyoutstandings
+
+  #resources :clearingouts
+  resources :transactions
   resources :partyrelationships
   resources :accounts
   resources :parties
@@ -19,6 +23,8 @@ TestApp::Application.routes.draw do
   match 'relationshipassignment', :to => 'partyrelationships#relationshipassignment'
   match 'relationshipassignment/assignpossession', :to => 'partyrelationships#assignpossession', :as => "assign_possession"
   match 'relationshipassignment/possessionrevoke', :to => 'partyrelationships#possessionrevoke', :as => "possession_revoke"
+  
+  match 'clearingouts/clearing', :to => 'clearingouts#clearing', :as => "clearing_out"  # maybe not used, call the modelclass#method Clearingout.all.to_xml instaed
   
   root :to => "pages#controlpanel"
   

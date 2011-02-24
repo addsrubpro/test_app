@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Amount:</b>
+  <%= @emoneyoutstanding.amount %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @emoneyoutstanding.date %>
+</p>
+
+
+<%= link_to 'Edit', edit_emoneyoutstanding_path(@emoneyoutstanding) %> |
+<%= link_to 'Back', emoneyoutstandings_path %>

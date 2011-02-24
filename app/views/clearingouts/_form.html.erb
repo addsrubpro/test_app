@@ -1,0 +1,25 @@
+<%= form_for(@clearingout) do |f| %>
+  <% if @clearingout.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@clearingout.errors.count, "error") %> prohibited this clearingout from being saved:</h2>
+
+      <ul>
+      <% @clearingout.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :clearing_date %><br />
+    <%= f.date_select :clearing_date %>
+  </div>
+  <div class="field">
+    <%= f.label :transaction_id %><br />
+    <%= f.text_field :transaction_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

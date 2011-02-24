@@ -1,5 +1,6 @@
 class Account < ActiveRecord::Base
   belongs_to :party
+  has_many :transactions
 end
 
 

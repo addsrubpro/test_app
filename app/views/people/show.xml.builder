@@ -1,3 +1,4 @@
+# only for test reasons
 xml.instruct!
 xml.person1 {
 	xml.id1(@person.id, "type"=>"EUR")

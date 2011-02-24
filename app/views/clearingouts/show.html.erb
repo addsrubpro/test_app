@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Clearing date:</b>
+  <%= @clearingout.clearing_date %>
+</p>
+
+<p>
+  <b>Transaction:</b>
+  <%= @clearingout.transaction_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_clearingout_path(@clearingout) %> |
+<%= link_to 'Back', clearingouts_path %>
