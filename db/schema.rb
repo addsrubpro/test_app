@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110221082811) do
+ActiveRecord::Schema.define(:version => 20110226094856) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "party_id"
@@ -18,6 +18,29 @@ ActiveRecord::Schema.define(:version => 20110221082811) do
     t.integer  "account_number"
     t.decimal  "charge_rate",    :precision => 3, :scale => 3
     t.boolean  "enabled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "addresses", :force => true do |t|
+    t.integer  "party_id"
+    t.string   "street"
+    t.string   "city"
+    t.integer  "country_id"
+    t.date     "valid_since"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "applications", :force => true do |t|
+    t.integer  "applicationstatus_id"
+    t.date     "status_date"
+    t.integer  "payment_account"
+    t.string   "name"
+    t.string   "street"
+    t.integer  "country_id"
+    t.integer  "account_number"
+    t.integer  "accounttype_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

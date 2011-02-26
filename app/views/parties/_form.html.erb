@@ -11,10 +11,44 @@
     </div>
   <% end %>
 
+  <hr />
+  <p>Party attributes</p>
   <div class="field">
     <%= f.label :payment_account %><br />
     <%= f.text_field :payment_account %>
   </div>
+
+  <hr />
+  <p>Address attributes</p>
+  <%= f.fields_for :addresses do |build| %>
+    <div class="field">
+      <%= build.label :street, "Street" %><br />
+      <%= build.text_field :street %>
+    </div>
+  <% end %>
+
+  <hr />
+  <p>Person attributes</p>  
+  <%= f.fields_for :person do |build| %>
+    <div class="field">
+      <%= build.label :name, "Name" %><br />
+      <%= build.text_field :name %>
+    </div>
+  <% end %>
+
+  <hr />
+  <p>Account attributes</p>
+  <%= f.fields_for :accounts do |build| %>
+    <div class="field">
+      <%= build.label :account_number, "Account number" %><br />
+      <%= build.text_field :account_number %>
+    </div>
+    <div class="field">
+      <%= build.label :accounttype_id, "Accounttype ID" %><br />
+      <%= build.text_field :accounttype_id %>
+    </div>
+  <% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

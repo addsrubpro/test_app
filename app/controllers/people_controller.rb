@@ -1,4 +1,6 @@
 class PeopleController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, :with => :rescue_record_not_found
+  
   # GET /people
   # GET /people.xml
   def index
@@ -14,14 +16,6 @@ class PeopleController < ApplicationController
   # GET /people/1.xml
   def show
     @person = Person.find(params[:id])
-    
-    # stream = render_to_string(:template => "people/show.xml.builder" )
-    ## enable download file on client
-    # send_data(stream, :type => "text/xml", :filename => "test9.xml")
-    ## store file on server
-    # my_file = File.new("tmp/inout/file9.2.xml","w")       # create a new "inout" folder within "tmp" first
-    # my_file.write stream
-    # my_file.close
 
     respond_to do |format|
       format.html # show.html.erb
@@ -32,8 +26,15 @@ class PeopleController < ApplicationController
   # GET /people/new
   # GET /people/new.xml
   def new
-    @person = Person.new
-
+    if params[:application_id].nil?
+      @person = Person.new
+      @person.build_party
+      
+    else
+      @a = Right.find(params[:application_id]).description
+      @person = Person.new(:name => @a)
+    end    
+      
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @person }
@@ -48,8 +49,9 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.xml
   def create
-    party = Party.create
-    @person = party.build_person(params[:person])
+    @person = Person.new(params[:person])
+    #party = Party.create
+    #@person = party.build_person(params[:person])
 
     respond_to do |format|
       if @person.save
@@ -90,5 +92,12 @@ class PeopleController < ApplicationController
       format.html { redirect_to(people_url) }
       format.xml  { head :ok }
     end
+  end
+  
+protected
+  # Rescue if record not found
+  def rescue_record_not_found
+    flash[:notice] = "No such entry found."
+    redirect_to new_person_path
   end
 end

@@ -1,0 +1,40 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  applicationstatus_id: 1
+  status_date: 2011-02-26
+  payment_account: 1
+  name: MyString
+  street: MyString
+  country_id: 1
+  account_number: 1
+  accounttype_id: 1
+
+two:
+  applicationstatus_id: 1
+  status_date: 2011-02-26
+  payment_account: 1
+  name: MyString
+  street: MyString
+  country_id: 1
+  account_number: 1
+  accounttype_id: 1
+
+# == Schema Information
+# Schema version: 20110226094856
+#
+# Table name: applications
+#
+#  id                   :integer         not null, primary key
+#  applicationstatus_id :integer
+#  status_date          :date
+#  payment_account      :integer
+#  name                 :string(255)
+#  street               :string(255)
+#  country_id           :integer
+#  account_number       :integer
+#  accounttype_id       :integer
+#  created_at           :datetime
+#  updated_at           :datetime
+#
+

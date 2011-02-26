@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  party_id: 1
+  street: MyString
+  city: MyString
+  country_id: 1
+  valid_since: 2011-02-26
+
+two:
+  party_id: 1
+  street: MyString
+  city: MyString
+  country_id: 1
+  valid_since: 2011-02-26
+
+# == Schema Information
+# Schema version: 20110226094856
+#
+# Table name: addresses
+#
+#  id          :integer         not null, primary key
+#  party_id    :integer
+#  street      :string(255)
+#  city        :string(255)
+#  country_id  :integer
+#  valid_since :date
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+

@@ -1,4 +1,6 @@
 class PartiesController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, :with => :rescue_record_not_found
+  
   # GET /parties
   # GET /parties.xml
   def index
@@ -24,8 +26,19 @@ class PartiesController < ApplicationController
   # GET /parties/new
   # GET /parties/new.xml
   def new
-    @party = Party.new
-
+    if params[:application_id].nil?
+      @party = Party.new
+      @party.build_person       # for has_one
+      @party.accounts.build     # for has_many
+      @party.addresses.build    # for has_many
+    else
+      request = Application.find(params[:application_id])
+      @party = Party.new(:payment_account => request.payment_account)
+      @party.build_person(:name => request.name)
+      @party.addresses.build(:street => request.street)
+      @party.accounts.build(:account_number => request.account_number, :accounttype_id => request.accounttype_id)
+    end  
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @party }
@@ -79,5 +92,12 @@ class PartiesController < ApplicationController
       format.html { redirect_to(parties_url) }
       format.xml  { head :ok }
     end
+  end
+  
+protected
+  # Rescue if record not found
+  def rescue_record_not_found
+    flash[:notice] = "No such entry found."
+    redirect_to new_party_path
   end
 end

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Applicationstatus:</b>
+  <%= @application.applicationstatus_id %>
+</p>
+
+<p>
+  <b>Status date:</b>
+  <%= @application.status_date %>
+</p>
+
+<p>
+  <b>Payment account:</b>
+  <%= @application.payment_account %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @application.name %>
+</p>
+
+<p>
+  <b>Street:</b>
+  <%= @application.street %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @application.country_id %>
+</p>
+
+<p>
+  <b>Account number:</b>
+  <%= @application.account_number %>
+</p>
+
+<p>
+  <b>Accounttype:</b>
+  <%= @application.accounttype_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_application_path(@application) %> |
+<%= link_to 'Back', applications_path %>

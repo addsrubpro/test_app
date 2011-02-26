@@ -1,6 +1,12 @@
 class Party < ActiveRecord::Base
-  has_one :person
-  has_many :accounts
+  has_one :person, :dependent => :destroy
+  accepts_nested_attributes_for :person
+  
+  has_many :accounts, :dependent => :destroy
+  accepts_nested_attributes_for :accounts
+  
+  has_many :addresses, :dependent => :destroy
+  accepts_nested_attributes_for :addresses
   
   has_many :principal_possession_relationships, :class_name => "Partyrelationship", :foreign_key => :principal_id, :dependent => :destroy
   has_many :possessions, :through => :principal_possession_relationships, :source => :possession

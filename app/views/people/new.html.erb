@@ -1,5 +1,13 @@
 <h1>New person</h1>
 
+<hr />
+<% form_tag :new_person, :method => :get do %>
+  <%= label_tag 'application_id', 'Application ID' %><br />
+  <%= text_field_tag :application_id, params[:application_id] %>
+  <%= submit_tag "Pull application", :name => nil %>
+<% end %>
+<hr />
+
 <%= render 'form' %>
 
 <%= link_to 'Back', people_path %>

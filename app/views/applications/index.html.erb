@@ -1,0 +1,37 @@
+<h1>Listing applications</h1>
+
+<table>
+  <tr>
+    <th>Applicationstatus</th>
+    <th>Status date</th>
+    <th>Payment account</th>
+    <th>Name</th>
+    <th>Street</th>
+    <th>Country</th>
+    <th>Account number</th>
+    <th>Accounttype</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @applications.each do |application| %>
+  <tr>
+    <td><%= application.applicationstatus_id %></td>
+    <td><%= application.status_date %></td>
+    <td><%= application.payment_account %></td>
+    <td><%= application.name %></td>
+    <td><%= application.street %></td>
+    <td><%= application.country_id %></td>
+    <td><%= application.account_number %></td>
+    <td><%= application.accounttype_id %></td>
+    <td><%= link_to 'Show', application %></td>
+    <td><%= link_to 'Edit', edit_application_path(application) %></td>
+    <td><%= link_to 'Destroy', application, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Application', new_application_path %>

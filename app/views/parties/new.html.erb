@@ -1,4 +1,11 @@
 <h1>New party</h1>
+<!-- Query form to get requests (applications) -->
+<hr />
+<% form_tag :new_party, :method => :get do %>
+  <%= label_tag 'application_id', 'Request ID' %><br />
+  <%= text_field_tag :application_id, params[:application_id] %>
+  <%= submit_tag "Get request", :name => nil %>
+<% end %>
 
 <%= render 'form' %>
 
