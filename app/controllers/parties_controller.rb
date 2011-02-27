@@ -26,14 +26,14 @@ class PartiesController < ApplicationController
   # GET /parties/new
   # GET /parties/new.xml
   def new
+    @party = Party.new
     if params[:application_id].nil?
-      @party = Party.new
       @party.build_person       # for has_one
       @party.accounts.build     # for has_many
       @party.addresses.build    # for has_many
     else
       request = Application.find(params[:application_id])
-      @party = Party.new(:payment_account => request.payment_account)
+      @party.update_attributes(:payment_account => request.payment_account)
       @party.build_person(:name => request.name)
       @party.addresses.build(:street => request.street)
       @party.accounts.build(:account_number => request.account_number, :accounttype_id => request.accounttype_id)

@@ -3,7 +3,7 @@ TestApp::Application.routes.draw do
   resources :addresses
   resources :emoneyoutstandings
 
-  #resources :clearingouts
+  resources :clearingouts
   resources :transactions
   resources :partyrelationships
   resources :accounts
@@ -26,7 +26,6 @@ TestApp::Application.routes.draw do
   match 'relationshipassignment/assignpossession', :to => 'partyrelationships#assignpossession', :as => "assign_possession"
   match 'relationshipassignment/possessionrevoke', :to => 'partyrelationships#possessionrevoke', :as => "possession_revoke"
   
-  match 'clearingouts/clearing', :to => 'clearingouts#clearing', :as => "clearing_out"  # maybe not used, call the modelclass#method Clearingout.all.to_xml instaed
   match 'people/new', :to => 'people#new'    # because people#new is also called from a form_tag included in a view template
   
   root :to => "pages#controlpanel"

@@ -1,16 +1,4 @@
-class ClearingoutsController < ApplicationController
-  # SEPA XML file creation for clearing out
-  def clearing
-    @clearingouts = Clearingout.find_all_by_clearing_date(Date.current)
-    stream = render_to_string(:template => "clearingouts/clearingout.xml.builder" )
-    my_file = File.new("tmp/inout/current_clearingout.xml","w")       # create a new "inout" folder within "tmp" first
-    my_file.write stream
-    my_file.close
-    
-    flash[:success] = "XML file >clearingout.xml< has been written successfully."
-    redirect_to root_path
-  end
-  
+class ClearingoutsController < ApplicationController  
   # GET /clearingouts
   # GET /clearingouts.xml
   def index
