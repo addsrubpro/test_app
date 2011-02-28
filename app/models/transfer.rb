@@ -1,6 +1,7 @@
 class Transfer
   def self.sepa_in
-    Hash.from_xml(File.read('tmp/inout/xmlfile.xml'))
+    a = Hash.from_xml(File.read('tmp/inout/xmlfile.xml'))
+    parse_xml(a)
   end
   def self.sepa_out
     xm = Builder::XmlMarkup.new(:indent =>2)
@@ -9,6 +10,7 @@ class Transfer
 end
 
 private
+
 def build_xml(xm)
   @clearingouts = Clearingout.all
   # SEPA XML structure for transfer out
@@ -50,6 +52,21 @@ def build_xml(xm)
       end
     end
   end
-  
-  
+end
+
+def parse_xml(sepa_h)
+  size = sepa_h.[]("Document").[]("pain.001.001.02").[]("PmtInf").[]("CdtTrfTxInf")
+  size.each_index do |i|
+    amt = sepa_h.[]("Document").[]("pain.001.001.02").[]("PmtInf").[]("CdtTrfTxInf")[i].[]("Amt").[]("InstdAmt").to_d
+    transactiontype_id = 3
+    hash = Hash[:amt, amt, :transactiontype_id, transactiontype_id]
+    write_record(hash)
+  end
+end
+
+def write_record(hash)
+  t = Transaction.new
+  t.amount = hash[:amt]
+  t.transactiontype_id = hash[:transactiontype_id]
+  t.save
 end
