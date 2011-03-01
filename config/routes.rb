@@ -1,4 +1,6 @@
 TestApp::Application.routes.draw do
+  resources :emoneyouts
+
   resources :applications
   resources :addresses
   resources :emoneyoutstandings

@@ -18,8 +18,8 @@ end
 private
   # calculate daily total for e-money issued and re-changed
   def calc_daily_credit_debit
-   credit = Transaction.sum(:amount, :conditions => "date IS '#{Date.current}' AND sign IS 'c' ")
-   debit = Transaction.sum(:amount, :conditions => "date IS '#{Date.current}' AND sign IS 'd' ")
+   credit = Transaction.sum(:amount, :conditions => "date IS '#{Date.current}' AND sign IS 'c' ")  # change this to transactiontype_id 1
+   debit = Transaction.sum(:amount, :conditions => "date IS '#{Date.current}' AND sign IS 'd' ")  # change this to transactiontype_id 4 (2 + 5)
    @dailytotal = credit - debit
    return @dailytotal
   end

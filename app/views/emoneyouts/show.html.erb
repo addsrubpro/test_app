@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Clearing date:</b>
+  <%= @emoneyout.clearing_date %>
+</p>
+
+<p>
+  <b>Transaction:</b>
+  <%= @emoneyout.transaction_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_emoneyout_path(@emoneyout) %> |
+<%= link_to 'Back', emoneyouts_path %>

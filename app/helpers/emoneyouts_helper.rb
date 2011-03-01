@@ -1,0 +1,2 @@
+module EmoneyoutsHelper
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110226094856) do
+ActiveRecord::Schema.define(:version => 20110301132940) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "party_id"
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(:version => 20110226094856) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "emoneyouts", :force => true do |t|
+    t.date     "clearing_date"
+    t.integer  "transaction_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "emoneyouts", ["clearing_date"], :name => "index_emoneyouts_on_clearing_date"
+  add_index "emoneyouts", ["transaction_id"], :name => "index_emoneyouts_on_transaction_id"
 
   create_table "emoneyoutstandings", :force => true do |t|
     t.decimal  "amount"
