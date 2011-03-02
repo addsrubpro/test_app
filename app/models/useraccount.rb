@@ -5,7 +5,11 @@ class Useraccount < ActiveRecord::Base
   belongs_to :person, :include => :party   # for eager-loading party
   
   attr_accessible :username, :email, :person_id
-  validates :username, :length => { :minimum => 2, :maximum => 8 }
+  validates :username, :presence => true, :length => { :minimum => 2, :maximum => 8 }
+  validates :email,   
+            :presence => true,   
+            :uniqueness => true,   
+            :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
 end
 
 

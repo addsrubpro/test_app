@@ -1,22 +1,12 @@
 <%= form_for(@useraccount) do |f| %>
-  <% if @useraccount.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@useraccount.errors.count, "error") %> prohibited this useraccount from being saved:</h2>
-
-      <ul>
-      <% @useraccount.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/error_messages", :target => @useraccount %>
 
   <div class="field">
-    <%= f.label :username %><br />
+    <%= f.label :username %><%= mark_required(@useraccount, :username) %><br />
     <%= f.text_field :username %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %><%= mark_required(@useraccount, :email) %><br />
     <%= f.text_field :email %>
   </div>
   <div class="field">

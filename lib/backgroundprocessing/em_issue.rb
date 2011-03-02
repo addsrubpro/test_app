@@ -1,3 +1,4 @@
+# E-money issue (book money in -> e-money out)
 module EmIssue
   require'builder'
   

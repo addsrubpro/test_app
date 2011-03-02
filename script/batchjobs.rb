@@ -17,12 +17,11 @@
 # Jobs to run daily at specified time
 # -----------------------------------
 # E-money re-change (e-money in -> book money out)
-#require'builder'
-Log.info("... EmRecha.process started ... Parse NFC XML file -> Create SEPA XML file.")
-EmRecha.process
-Log.info("Finished.")
+#Log.info("... EmRecha.process started ... Parse NFC XML file -> Create SEPA XML file.")
+#EmRecha.process
+#Log.info("Finished.")
 
 # E-money issue (book money in -> e-money out)
-#Log.info("... EmIssue.process started ... Parse SEPA XML file -> Create NFC XML file.")
-#EmIssue.process
-#Log.info("Finished.")
+Log.info("... EmIssue.process started ... Parse SEPA XML file -> Create NFC XML file.")
+EmIssue.process
+Log.info("Finished.")
