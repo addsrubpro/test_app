@@ -3,26 +3,26 @@
 # Jobs to run daily at day's close
 # --------------------------------
 # Calculate amount of e-money in circulation and build history
-Log.info("Started job ... Calculate e-money in circulation and build history.")
-Emoneyoutstanding.history_emoney_outstanding
-Log.info("... e-money in circulation: " + $overalltotal.to_s)
-Log.info("Finished.")
+#Log.info("Started job ... Calculate e-money in circulation and build history.")
+#Emoneyoutstanding.history_emoney_outstanding
+#Log.info("... e-money in circulation: " + $overalltotal.to_s)
+#Log.info("Finished.")
 
 # Calculate capital requirement
-Log.info("Started job ... Calculate capital requirement.")
-CapitalRequirement.calc_capital
-Log.info("... e-money in circulation mean: " + $mean.to_s + " capital requirement: " + $capital.to_s)
-Log.info("Finished.")
+#Log.info("Started job ... Calculate capital requirement.")
+#CapitalRequirement.calc_capital
+#Log.info("... e-money in circulation mean: " + $mean.to_s + " capital requirement: " + $capital.to_s)
+#Log.info("Finished.")
 
 # Jobs to run daily at specified time
 # -----------------------------------
-# em_in -> bm_out (Parse NFC XML file -> Create SEPA XML file)
+# E-money re-change (e-money in -> book money out)
 #require'builder'
-#Log.info("Started job ... Create SEPA XML file.")
-#Transfer.sepa_out
-#Log.info("Finished.")
+Log.info("... EmRecha.process started ... Parse NFC XML file -> Create SEPA XML file.")
+EmRecha.process
+Log.info("Finished.")
 
-# bm_in -> em_out (Parse SEPA XML file -> Create NFC XML file)
-#Log.info("Started job ... Parse SEPA XML file.")
-#Transfer.sepa_in
+# E-money issue (book money in -> e-money out)
+#Log.info("... EmIssue.process started ... Parse SEPA XML file -> Create NFC XML file.")
+#EmIssue.process
 #Log.info("Finished.")
