@@ -1,31 +1,60 @@
 <h1>Controlpanel</h1>
 
-<p>
-  <%= link_to 'E-money accounts management', accounts_path %>
-</p>
-<hr>
-<p>
-  <%= link_to 'Parties management', parties_path %><br />
-  <%= link_to 'Partyrelationship management', relationshipassignment_path %><br />
-  <%= link_to 'People management', people_path %>
-</p>
-<hr>
-<p>
-  <%= link_to 'Useraccounts management', useraccounts_path %><br />
-  <%= link_to 'Useraccount rights assignment', rightassignment_path %>
-</p>
-<hr>
-<p>
-  <%= link_to 'Rights management', rights_path %><br />
-</p>
-<hr>
-<p>
-  Only for development:
-</p>
-<p>
-  <%= link_to 'Listing Partyrelationships', partyrelationships_path %><br />
-</p>
-<p>
-  <%= link_to 'Listing Requests', applications_path %><br />
-  <%= link_to 'E-money account transactions (booking)', transactions_path %>
-</p>
+<table>
+  <tr>
+    <th>Class</th>
+    <th>New</th>
+    <th>Index</th>
+  </tr>
+  <tr>
+    <td>Requests</td>
+    <td><%= link_to 'New request', new_request_path %></td>
+    <td><%= link_to 'Requests index', requests_path %></td>
+  </tr>
+  <tr>
+    <td>Parties</td>
+    <td><%= link_to 'New party', new_party_path %></td>
+    <td><%= link_to 'Parties index', parties_path %></td>
+  </tr>
+  <tr>
+    <td>Party relationships</td>
+    <td><%= link_to 'New party relationship', relationshipassignment_path %></td>
+    <td><%= link_to 'Party relationships index', relationshipassignment_path %></td>
+  </tr>
+  <tr>
+    <td>People</td>
+    <td><%= link_to 'New person', new_person_path %></td>
+    <td><%= link_to 'People index', people_path %></td>
+  </tr>
+  <tr>
+    <td>Useraccounts</td>
+    <td><%= link_to 'New useraccount', new_useraccount_path %></td>
+    <td><%= link_to 'Useraccounts index', useraccounts_path %></td>
+  </tr>
+  <tr>
+    <td>User rights</td>
+    <td><%= link_to 'New useraccount right', rightassignment_path %></td>
+    <td><%= link_to 'Useraccount rights index', rightassignment_path %></td>
+  </tr>
+  <tr>
+    <td>Rights</td>
+    <td><%= link_to 'New right', new_right_path %></td>
+    <td><%= link_to 'Rights index', rights_path %></td>
+  </tr>
+<!-- For development only -->
+  <tr>
+    <th>Class (Development only)</th>
+    <th>New</th>
+    <th>Index</th>
+  </tr>
+  <tr>
+    <td>Party relationships</td>
+    <td><%= link_to 'Partyrelationships', partyrelationships_path %></td>
+    <td><%= link_to 'Partyrelationships', partyrelationships_path %></td>
+  </tr>
+  <tr>
+    <td>E-money account transactions</td>
+    <td><%= link_to 'New transaction (booking)', new_transaction_path %></td>
+    <td><%= link_to 'Transactions index', transactions_path %></td>
+  </tr>
+</table>

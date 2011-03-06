@@ -6,14 +6,16 @@ one:
 two:
   payment_account: 1
 
+
+
 # == Schema Information
-# Schema version: 20110214114731
+# Schema version: 20110306112019
 #
 # Table name: parties
 #
-#  id              :integer         not null, primary key
-#  payment_account :integer
-#  created_at      :datetime
-#  updated_at      :datetime
+#  id           :integer         not null, primary key
+#  payment_iban :string(40)
+#  created_at   :datetime
+#  updated_at   :datetime
 #
 

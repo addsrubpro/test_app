@@ -1,54 +1,92 @@
 <%= form_for(@party) do |f| %>
-  <% if @party.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@party.errors.count, "error") %> prohibited this party from being saved:</h2>
-
-      <ul>
-      <% @party.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/error_messages", :target => @party %>
 
   <hr />
-  <p>Party attributes</p>
-  <div class="field">
-    <%= f.label :payment_account %><br />
-    <%= f.text_field :payment_account %>
-  </div>
-
-  <hr />
-  <p>Address attributes</p>
-  <%= f.fields_for :addresses do |build| %>
+  <!-- Account attributes -->
+  <%= f.fields_for :accounts do |acc| %>
     <div class="field">
-      <%= build.label :street, "Street" %><br />
-      <%= build.text_field :street %>
-    </div>
-  <% end %>
-
-  <hr />
-  <p>Person attributes</p>  
-  <%= f.fields_for :person do |build| %>
-    <div class="field">
-      <%= build.label :name, "Name" %><br />
-      <%= build.text_field :name %>
-    </div>
-  <% end %>
-
-  <hr />
-  <p>Account attributes</p>
-  <%= f.fields_for :accounts do |build| %>
-    <div class="field">
-      <%= build.label :account_number, "Account number" %><br />
-      <%= build.text_field :account_number %>
-    </div>
-    <div class="field">
-      <%= build.label :accounttype_id, "Accounttype ID" %><br />
-      <%= build.text_field :accounttype_id %>
+      <%= acc.label :accounttype_id, "Account type" %><%= mark_required(@party.accounts.first, :accounttype_id) %><br />
+      <%= acc.collection_select(:accounttype_id, Accounttype.all, :id, :description, {:prompt => true} ) %>
     </div>
   <% end %>
   
+   <!-- Person attributes -->  
+  <%= f.fields_for :person do |p| %>
+    <div class="field">
+      <%= p.label :title_id %><%= mark_required(@party.person, :title_id) %><br />
+      <%= p.collection_select(:title_id, Title.all, :id, :description, {:prompt => true} ) %>
+    </div>
+     <div class="field">
+      <%= p.label :degree %><%= mark_required(@party.person, :degree) %><br />
+      <%= p.text_field :degree %>
+    </div>
+    <div class="field">
+      <%= p.label :first_name, "First name" %><%= mark_required(@party.person, :first_name) %><br />
+      <%= p.text_field :first_name %>
+    </div>
+    <div class="field">
+      <%= p.label :middle_name, "Middle name" %><%= mark_required(@party.person, :middle_name) %><br />
+      <%= p.text_field :middle_name %>
+    </div>
+    <div class="field">
+      <%= p.label :last_name, "Last name" %><%= mark_required(@party.person, :last_name) %><br />
+      <%= p.text_field :last_name %>
+    </div>
+    
+    <!-- Party attributes -->
+    <div class="field">
+      <%= f.label :payment_iban, "Payment account (IBAN)" %><%= mark_required(@party, :payment_iban) %><br />
+      <%= f.text_field :payment_iban %>
+    </div>
+    
+    <!-- Person attributes proceeding-->
+    <div class="field">
+      <%= p.label :email %><%= mark_required(@party.person, :email) %><br />
+      <%= p.text_field :email %>
+    </div>
+    <div class="field">
+      <%= p.label :telephone %><%= mark_required(@party.person, :telephone) %><br />
+      <%= p.text_field :telephone %>
+    </div>
+    <div class="field">
+      <%= p.label :birth_date %><%= mark_required(@party.person, :birth_date) %><br />
+      <%= p.date_select(:birth_date, :start_year => 1940, :end_year => Date.current.year) %>
+    </div>
+    <div class="field">
+      <%= p.label :birth_place %><%= mark_required(@party.person, :birth_place) %><br />
+      <%= p.text_field :birth_place %>
+    </div>
+  <% end %>
+  
+  <!-- Address attributes -->
+  <%= f.fields_for :addresses do |build| %>
+    <div class="field">
+      <%= build.label :street %><%= mark_required(@party.addresses.first, :street) %><br />
+      <%= build.text_field :street %>
+    </div>
+    <div class="field">
+      <%= build.label :housenumber, "House number" %><%= mark_required(@party.addresses.first, :housenumber) %><br />
+      <%= build.text_field :housenumber %>
+    </div>
+    <div class="field">
+      <%= build.label :postal_supplement %><%= mark_required(@party.addresses.first, :postal_supplement) %><br />
+      <%= build.text_field :postal_supplement %>
+    </div>
+    <div class="field">
+      <%= build.label :zipcode %><%= mark_required(@party.addresses.first, :zipcode) %><br />
+      <%= build.text_field :zipcode %>
+    </div>
+    <div class="field">
+      <%= build.label :city %><%= mark_required(@party.addresses.first, :city) %><br />
+      <%= build.text_field :city %>
+    </div>
+    <div class="field">
+      <%= build.label :country_id %><%= mark_required(@party.addresses.first, :country_id) %><br />
+      <%= build.collection_select(:country_id, Country.all(:order => 'description'), :id, :description, {:prompt => true} ) %>
+    </div>
+  <% end %>
+
+  <hr />
   <div class="actions">
     <%= f.submit %>
   </div>

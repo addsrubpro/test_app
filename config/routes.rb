@@ -1,10 +1,13 @@
 TestApp::Application.routes.draw do
+  resources :countries
+  resources :titles
+  resources :accounttypes
+  resources :requeststatuses
+  resources :requests
   resources :emoneyouts
-
   resources :applications
   resources :addresses
   resources :emoneyoutstandings
-
   resources :clearingouts
   resources :transactions
   resources :partyrelationships

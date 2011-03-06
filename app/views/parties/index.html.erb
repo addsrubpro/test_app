@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Party ID</th>
-    <th>Payment account</th>
+    <th>Payment IBAN</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +12,7 @@
 <% @parties.each do |party| %>
   <tr>
     <td><%= party.id %></td>
-    <td><%= party.payment_account %></td>
+    <td><%= party.payment_iban %></td>
     <td><%= link_to 'Show', party %></td>
     <td><%= link_to 'Edit', edit_party_path(party) %></td>
     <td><%= link_to 'Destroy', party, :confirm => 'Are you sure?', :method => :delete %></td>

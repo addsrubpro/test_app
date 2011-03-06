@@ -1,0 +1,25 @@
+<%= form_for(@accounttype) do |f| %>
+  <% if @accounttype.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@accounttype.errors.count, "error") %> prohibited this accounttype from being saved:</h2>
+
+      <ul>
+      <% @accounttype.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :default_charge_rate %><br />
+    <%= f.text_field :default_charge_rate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

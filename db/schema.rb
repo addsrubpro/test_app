@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110301132940) do
+ActiveRecord::Schema.define(:version => 20110306112019) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "party_id"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(:version => 20110301132940) do
     t.integer  "account_number"
     t.decimal  "charge_rate",    :precision => 3, :scale => 3
     t.boolean  "enabled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "accounttypes", :force => true do |t|
+    t.string   "description"
+    t.decimal  "default_charge_rate", :precision => 2, :scale => 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,24 +37,22 @@ ActiveRecord::Schema.define(:version => 20110301132940) do
     t.date     "valid_since"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "housenumber"
+    t.string   "postal_supplement"
+    t.string   "zipcode"
   end
 
-  create_table "applications", :force => true do |t|
-    t.integer  "applicationstatus_id"
-    t.date     "status_date"
-    t.integer  "payment_account"
-    t.string   "name"
-    t.string   "street"
-    t.integer  "country_id"
-    t.integer  "account_number"
-    t.integer  "accounttype_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "addresses", ["party_id"], :name => "index_addresses_on_party_id"
 
   create_table "clearingouts", :force => true do |t|
     t.date     "clearing_date"
     t.integer  "transaction_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "countries", :force => true do |t|
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,10 +75,12 @@ ActiveRecord::Schema.define(:version => 20110301132940) do
   end
 
   create_table "parties", :force => true do |t|
-    t.integer  "payment_account"
+    t.string   "payment_iban", :limit => 40
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "parties", ["payment_iban"], :name => "index_parties_on_payment_iban"
 
   create_table "partyrelationships", :force => true do |t|
     t.integer  "principal_id"
@@ -88,9 +95,59 @@ ActiveRecord::Schema.define(:version => 20110301132940) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "title_id"
+    t.string   "degree"
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "telephone"
+    t.date     "birth_date"
+    t.string   "birth_place"
+  end
+
+  add_index "people", ["email"], :name => "index_people_on_email"
+  add_index "people", ["party_id"], :name => "index_people_on_party_id"
+
+  create_table "requests", :force => true do |t|
+    t.integer  "requeststatus_id"
+    t.date     "requeststatus_date"
+    t.string   "payment_iban"
+    t.integer  "title_id"
+    t.string   "degree"
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "telephone"
+    t.date     "birth_date"
+    t.string   "birth_place"
+    t.string   "street"
+    t.string   "housenumber"
+    t.string   "postal_supplement"
+    t.string   "zipcode"
+    t.string   "city"
+    t.integer  "country_id"
+    t.integer  "accounttype_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "requests", ["requeststatus_id"], :name => "index_requests_on_requeststatus_id"
+
+  create_table "requeststatuses", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "rights", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "titles", :force => true do |t|
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"

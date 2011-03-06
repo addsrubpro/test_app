@@ -1,23 +1,25 @@
 <%= form_for(@address) do |f| %>
-  <% if @address.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
-
-      <ul>
-      <% @address.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/error_messages", :target => @address %>
 
   <div class="field">
     <%= f.label :party_id %><br />
-    <%= f.text_field :party_id %>
+    <%= f.text_field :party_id, :disabled => true %>
   </div>
   <div class="field">
     <%= f.label :street %><br />
     <%= f.text_field :street %>
+  </div>
+  <div class="field">
+    <%= f.label :housenumber %><br />
+    <%= f.text_field :housenumber %>
+  </div>
+  <div class="field">
+    <%= f.label :postal_supplement %><br />
+    <%= f.text_field :postal_supplement %>
+  </div>
+  <div class="field">
+    <%= f.label :zipcode %><br />
+    <%= f.text_field :zipcode %>
   </div>
   <div class="field">
     <%= f.label :city %><br />
@@ -26,10 +28,6 @@
   <div class="field">
     <%= f.label :country_id %><br />
     <%= f.text_field :country_id %>
-  </div>
-  <div class="field">
-    <%= f.label :valid_since %><br />
-    <%= f.date_select :valid_since %>
   </div>
   <div class="actions">
     <%= f.submit %>

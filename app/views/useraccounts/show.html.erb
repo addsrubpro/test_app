@@ -1,19 +1,22 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Username:</b>
-  <%= @useraccount.username %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @useraccount.email %>
-</p>
-
-<p>
-  <b>Person ID:</b>
-  <%= @useraccount.person_id %>
-</p>
+<table>
+  <tr>
+    <td width=200px>Person ID</td>
+    <td><%= @useraccount.person.id %></td>
+  </tr>
+  <tr>
+    <td>Party ID</td>
+    <td><%= @useraccount.person.party.id %></td>
+  </tr>
+  <tr>
+    <td>User account name</td>
+    <td><%= @useraccount.username %></td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><%= @useraccount.email %></td>
+  </tr>
+</table>
 
 
 <%= link_to 'Edit', edit_useraccount_path(@useraccount) %> |

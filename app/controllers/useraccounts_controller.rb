@@ -24,8 +24,8 @@ class UseraccountsController < ApplicationController
   # GET /useraccounts/new
   # GET /useraccounts/new.xml
   def new
-    @useraccount = Useraccount.new
-
+    @useraccount = Useraccount.new(:person_id => params[:person_id])
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @useraccount }
@@ -41,7 +41,7 @@ class UseraccountsController < ApplicationController
   # POST /useraccounts.xml
   def create
     @useraccount = Useraccount.new(params[:useraccount])
-
+    
     respond_to do |format|
       if @useraccount.save
         flash[:success] = "Useraccount was successfully created."

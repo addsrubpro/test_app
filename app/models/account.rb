@@ -1,6 +1,8 @@
 class Account < ActiveRecord::Base
   belongs_to :party
   has_many :transactions
+  
+  validates :accounttype_id, :presence => true
 end
 
 

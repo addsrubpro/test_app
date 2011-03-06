@@ -1,0 +1,75 @@
+<%= form_for(@request) do |f| %>
+  <%= render "shared/error_messages", :target => @request %>
+
+  <div class="field">
+    <%= f.label :accounttype_id, "Account type" %><%= mark_required(@request, :accounttype_id) %><br />
+    <%= collection_select(:request, :accounttype_id, Accounttype.all(:order => 'description ASC'), :id, :description, {:prompt => true} ) %>
+  </div>
+  <div class="field">
+    <%= f.label :title_id %><%= mark_required(@request, :title_id) %><br />
+    <%= collection_select(:request, :title_id, Title.all(:order => 'description ASC'), :id, :description, {:prompt => true} ) %>
+  </div>
+  <div class="field">
+    <%= f.label :degree %><%= mark_required(@request, :degree) %><br />
+    <%= f.text_field :degree %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><%= mark_required(@request, :first_name) %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :middle_name %><%= mark_required(@request, :middle_name) %><br />
+    <%= f.text_field :middle_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><%= mark_required(@request, :last_name) %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_iban, "Payment account (IBAN)" %><%= mark_required(@request, :payment_iban) %><br />
+    <%= f.text_field :payment_iban %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><%= mark_required(@request, :email) %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :telephone %><%= mark_required(@request, :telephone) %><br />
+    <%= f.text_field :telephone %>
+  </div>
+  <div class="field">
+    <%= f.label :birth_date %><%= mark_required(@request, :birth_date) %><br />
+    <%= f.date_select(:birth_date, :start_year => 1940, :end_year => Date.current.year) %>
+  </div>
+  <div class="field">
+    <%= f.label :birth_place %><%= mark_required(@request, :birth_place) %><br />
+    <%= f.text_field :birth_place %>
+  </div>
+  <div class="field">
+    <%= f.label :street %><%= mark_required(@request, :street) %><br />
+    <%= f.text_field :street %>
+  </div>
+  <div class="field">
+    <%= f.label :housenumber, "House number" %><%= mark_required(@request, :housenumber) %><br />
+    <%= f.text_field :housenumber %>
+  </div>
+  <div class="field">
+    <%= f.label :postal_supplement %><%= mark_required(@request, :postal_supplement) %><br />
+    <%= f.text_field :postal_supplement %>
+  </div>
+  <div class="field">
+    <%= f.label :zipcode %><%= mark_required(@request, :zipcode) %><br />
+    <%= f.text_field :zipcode %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><%= mark_required(@request, :city) %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :country_id %><%= mark_required(@request, :country_id) %><br />
+    <%= collection_select(:request, :country_id, Country.all(:order => 'description ASC'), :id, :description, {:prompt => true} ) %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Submit request' %>
+  </div>
+<% end %>

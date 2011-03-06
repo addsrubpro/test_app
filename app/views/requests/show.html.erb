@@ -1,0 +1,86 @@
+
+<table>
+  <tr>
+    <td width=200px>Request ID</td>
+    <td><%=h @request.id %></td>
+  </tr>
+  <tr>
+    <td>Request status</td>
+    <td><%= @request.requeststatus.description %></td> 
+  </tr>
+  <tr>
+    <td>Request status date</td>
+    <td><%= @request.requeststatus_date %></td> 
+  </tr>
+  <tr>
+    <td>Account type</td>
+    <td><%= @request.accounttype.description %></td> 
+  </tr>
+  <tr>
+    <td>Title</td>
+    <td><%= @request.title.description %></td> 
+  </tr>
+  <tr>
+    <td>Degree</td>
+    <td><%= @request.degree %></td> 
+  </tr>
+  <tr>
+    <td>First name</td>
+    <td><%= @request.first_name %></td> 
+  </tr>
+  <tr>
+    <td>Middle name</td>
+    <td><%= @request.middle_name %></td> 
+  </tr>
+  <tr>
+    <td>Last name</td>
+    <td><%= @request.last_name %></td> 
+  </tr>
+  <tr>
+    <td>Payment account (IBAN)</td>
+    <td><%= @request.payment_iban %></td> 
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><%= @request.email %></td> 
+  </tr>
+  <tr>
+    <td>Telephone</td>
+    <td><%= @request.telephone %></td> 
+  </tr>
+  <tr>
+    <td>Birth date</td>
+    <td><%= @request.birth_date %></td> 
+  </tr>
+  <tr>
+    <td>Birth place</td>
+    <td><%= @request.birth_place %></td> 
+  </tr>
+  <tr>
+    <td>Street</td>
+    <td><%= @request.street %></td> 
+  </tr>
+  <tr>
+    <td>House number</td>
+    <td><%= @request.housenumber %></td> 
+  </tr>
+  <tr>
+    <td>Postal supplement</td>
+    <td><%= @request.postal_supplement %></td> 
+  </tr>
+  <tr>
+    <td>Zipcode</td>
+    <td><%= @request.zipcode %></td> 
+  </tr>
+  <tr>
+    <td>City</td>
+    <td><%= @request.city %></td> 
+  </tr>
+  <tr>
+    <td>Country</td>
+    <td><%= @request.country.description %></td> 
+  </tr>
+</table>
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>

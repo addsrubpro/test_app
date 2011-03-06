@@ -2,8 +2,8 @@
 <!-- Query form to get requests (applications) -->
 <hr />
 <% form_tag :new_party, :method => :get do %>
-  <%= label_tag 'application_id', 'Request ID' %><br />
-  <%= text_field_tag :application_id, params[:application_id] %>
+  <%= label_tag 'request_id', 'Request ID' %><br />
+  <%= text_field_tag :request_id, params[:request_id] %>
   <%= submit_tag "Get request", :name => nil %>
 <% end %>
 

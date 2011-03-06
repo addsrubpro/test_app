@@ -27,16 +27,33 @@ class PartiesController < ApplicationController
   # GET /parties/new.xml
   def new
     @party = Party.new
-    if params[:application_id].nil?
+    if params[:request_id].nil?
       @party.build_person       # for has_one
       @party.accounts.build     # for has_many
       @party.addresses.build    # for has_many
     else
-      request = Application.find(params[:application_id])
-      @party.update_attributes(:payment_account => request.payment_account)
-      @party.build_person(:name => request.name)
-      @party.addresses.build(:street => request.street)
-      @party.accounts.build(:account_number => request.account_number, :accounttype_id => request.accounttype_id)
+      request = Request.find(params[:request_id])
+      # Account attributes
+      @party.accounts.build(:accounttype_id => request.accounttype_id)
+      # Person attributes
+      @party.build_person(:title_id => request.title_id,
+                          :degree => request.degree,
+                          :first_name => request.first_name,
+                          :middle_name => request.middle_name,
+                          :last_name => request.last_name,
+                          :email => request.email,
+                          :telephone => request.telephone,
+                          :birth_date => request.birth_date,
+                          :birth_place => request.birth_place )
+      # Party attributes
+      @party.payment_iban = request.payment_iban
+      # Address attributes
+      @party.addresses.build(:street => request.street,
+                             :housenumber => request.housenumber,
+                             :postal_supplement => request.postal_supplement,
+                             :zipcode => request.zipcode,
+                             :city => request.city,
+                             :country_id => request.country_id )
     end  
     
     respond_to do |format|
@@ -57,7 +74,8 @@ class PartiesController < ApplicationController
 
     respond_to do |format|
       if @party.save
-        format.html { redirect_to(@party, :notice => 'Party was successfully created.') }
+        flash[:success] = "Party was successfully created."
+        format.html { redirect_to(@party) }
         format.xml  { render :xml => @party, :status => :created, :location => @party }
       else
         format.html { render :action => "new" }
@@ -73,7 +91,8 @@ class PartiesController < ApplicationController
 
     respond_to do |format|
       if @party.update_attributes(params[:party])
-        format.html { redirect_to(@party, :notice => 'Party was successfully updated.') }
+        flash[:success] = "Party was successfully updated."
+        format.html { redirect_to(@party) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

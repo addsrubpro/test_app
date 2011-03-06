@@ -1,0 +1,23 @@
+<h1>Listing requeststatuses</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @requeststatuses.each do |requeststatus| %>
+  <tr>
+    <td><%= requeststatus.description %></td>
+    <td><%= link_to 'Show', requeststatus %></td>
+    <td><%= link_to 'Edit', edit_requeststatus_path(requeststatus) %></td>
+    <td><%= link_to 'Destroy', requeststatus, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Requeststatus', new_requeststatus_path %>

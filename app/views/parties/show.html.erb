@@ -1,10 +1,76 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Payment account:</b>
-  <%= @party.payment_account %>
-</p>
-
+<table>
+  <tr>
+    <td width=200px>Party ID</td>
+    <td><%= @party.id %></td>
+  </tr>
+  <tr>
+    <td>E-money accounts</td>
+    <td>
+      <% if @party.accounts.any? %>
+        <% @party.accounts.each do |acc| %>
+          - <%= link_to acc.account_number, account_path(:id => acc.id) %> -
+        <% end %>
+      <% end %>
+    </td> 
+  </tr>
+  <tr>
+    <td>User account</td>
+    <% @person_id = @party.person.id %>
+    <td><%= create_useraccount_on_fail {link_to(@party.person.useraccount.username, @party.person.useraccount) } %></td>
+  </tr>
+  <tr>
+    <td>Title ID</td>
+    <td><%= none_on_fail {@party.person.title.description} %></td>
+  </tr>
+  <tr>
+    <td>Degree</td>
+    <td><%= @party.person.degree %></td>
+  </tr>
+  <tr>
+    <td>First name</td>
+    <td><%= @party.person.first_name %></td>
+  </tr>
+  <tr>
+    <td>Middle name</td>
+    <td><%= @party.person.middle_name %></td>
+  </tr>
+  <tr>
+    <td>Last name</td>
+    <td><%= @party.person.last_name %></td>
+  </tr>
+  <tr>
+    <td>Payment account (IBAN)</td>
+    <td><%= @party.payment_iban %></td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><%= @party.person.email %></td>
+  </tr>
+  <tr>
+    <td>Telephone</td>
+    <td><%= @party.person.telephone %></td>
+  </tr>
+  <tr>
+    <td>Birth date</td>
+    <td><%= @party.person.birth_date %></td>
+  </tr>
+  <tr>
+    <td>Birth place</td>
+    <td><%= @party.person.birth_place %></td>
+  </tr>
+  <tr>
+    <td>Addresses</td>
+    <td>
+      <% if @party.addresses.any? %>
+        <% @party.addresses.each do |add| %>
+          <%  comp = add.street + " " + add.housenumber + ", " + add.zipcode + " " + add.city %>
+          - <%= link_to(comp, address_path(:id => add.id)) %> -
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+</table>
 
 <%= link_to 'Edit', edit_party_path(@party) %> |
 <%= link_to 'Back', parties_path %>

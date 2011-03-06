@@ -14,18 +14,22 @@ two:
   country_id: 1
   valid_since: 2011-02-26
 
+
 # == Schema Information
-# Schema version: 20110226094856
+# Schema version: 20110303133148
 #
 # Table name: addresses
 #
-#  id          :integer         not null, primary key
-#  party_id    :integer
-#  street      :string(255)
-#  city        :string(255)
-#  country_id  :integer
-#  valid_since :date
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id                :integer         not null, primary key
+#  party_id          :integer
+#  street            :string(255)
+#  city              :string(255)
+#  country_id        :integer
+#  valid_since       :date
+#  created_at        :datetime
+#  updated_at        :datetime
+#  housenumber       :string(255)
+#  postal_supplement :string(255)
+#  zipcode           :string(255)
 #
 

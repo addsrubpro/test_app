@@ -1,0 +1,59 @@
+<h1>Listing requests</h1>
+
+<table>
+  <tr>
+    <th>Requeststatus</th>
+    <th>Requeststatus date</th>
+    <th>Accounttype</th>
+    <th>Title</th>
+    <th>Degree</th>
+    <th>First name</th>
+    <th>Middle name</th>
+    <th>Last name</th>
+    <th>Payment iban</th>
+    <th>Email</th>
+    <th>Telephone</th>
+    <th>Birth date</th>
+    <th>Birth place</th>
+    <th>Street</th>
+    <th>Housenumber</th>
+    <th>Postal supplement</th>
+    <th>Zipcode</th>
+    <th>City</th>
+    <th>Country</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @requests.each do |request| %>
+  <tr>
+    <td><%= request.requeststatus_id %></td>
+    <td><%= request.requeststatus_date %></td>
+    <td><%= request.accounttype_id %></td>
+    <td><%= request.title_id %></td>
+    <td><%= request.degree %></td>
+    <td><%= request.first_name %></td>
+    <td><%= request.middle_name %></td>
+    <td><%= request.last_name %></td>
+    <td><%= request.payment_iban %></td>
+    <td><%= request.email %></td>
+    <td><%= request.telephone %></td>
+    <td><%= request.birth_date %></td>
+    <td><%= request.birth_place %></td>
+    <td><%= request.street %></td>
+    <td><%= request.housenumber %></td>
+    <td><%= request.postal_supplement %></td>
+    <td><%= request.zipcode %></td>
+    <td><%= request.city %></td>
+    <td><%= request.country_id %></td>
+    <td><%= link_to 'Show', request %></td>
+    <td><%= link_to 'Edit', edit_request_path(request) %></td>
+    <td><%= link_to 'Destroy', request, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Request', new_request_path %>

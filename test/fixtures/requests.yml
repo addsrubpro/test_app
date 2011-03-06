@@ -1,0 +1,73 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  requeststatus_id: 1
+  requeststatus_date: 2011-03-03
+  payment_iban: MyString
+  title_id: 1
+  degree: MyString
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  email: MyString
+  telephone: MyString
+  birth_date: 2011-03-03
+  birth_place: MyString
+  street: MyString
+  housenumber: MyString
+  postal_supplement: MyString
+  zipcode: MyString
+  city: MyString
+  country_id: 1
+  accounttype_id: 1
+
+two:
+  requeststatus_id: 1
+  requeststatus_date: 2011-03-03
+  payment_iban: MyString
+  title_id: 1
+  degree: MyString
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  email: MyString
+  telephone: MyString
+  birth_date: 2011-03-03
+  birth_place: MyString
+  street: MyString
+  housenumber: MyString
+  postal_supplement: MyString
+  zipcode: MyString
+  city: MyString
+  country_id: 1
+  accounttype_id: 1
+
+# == Schema Information
+# Schema version: 20110303094723
+#
+# Table name: requests
+#
+#  id                 :integer         not null, primary key
+#  requeststatus_id   :integer
+#  requeststatus_date :date
+#  payment_iban       :string(255)
+#  title_id           :integer
+#  degree             :string(255)
+#  first_name         :string(255)
+#  middle_name        :string(255)
+#  last_name          :string(255)
+#  email              :string(255)
+#  telephone          :string(255)
+#  birth_date         :date
+#  birth_place        :string(255)
+#  street             :string(255)
+#  housenumber        :string(255)
+#  postal_supplement  :string(255)
+#  zipcode            :string(255)
+#  city               :string(255)
+#  country_id         :integer
+#  accounttype_id     :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#
+

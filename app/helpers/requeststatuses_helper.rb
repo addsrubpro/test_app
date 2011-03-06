@@ -1,0 +1,2 @@
+module RequeststatusesHelper
+end
